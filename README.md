@@ -4,8 +4,9 @@ A fully functional **Book Store Backend Application** built using **Spring Boot,
 
 This project demonstrates real-world backend development concepts including CRUD operations, validation, exception handling, and clean architecture.
 
-📸 Screenshots
-🏗️ 1️⃣ Project Architecture Flow
+
+ ## Project Architecture Flow
+ 
 <img width="1011" height="1638" alt="flow of project" src="https://github.com/user-attachments/assets/c6151d19-dd07-4f2c-ae19-54a70ef2110d" />
 
 ---
@@ -67,6 +68,8 @@ spring.jpa.show-sql=true
 ---
 
 ## 📌 API Endpoints
+## REST API Flow
+![flow2](https://github.com/user-attachments/assets/dfc60f27-5ac3-413a-80f7-0301c95874b0)
 
 ### 🔹 Create Book
 
