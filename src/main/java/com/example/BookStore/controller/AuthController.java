@@ -1,6 +1,7 @@
 package com.example.BookStore.controller;
 
 import com.example.BookStore.DTO.LoginRequest;
+import com.example.BookStore.Jwt.JwtUtil;
 import com.example.BookStore.entity.User;
 import com.example.BookStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class AuthController {
 //    public AuthController(AuthenticationManager authenticationManager) {
 //        this.authenticationManager = authenticationManager;
 //    }
+    private final JwtUtil jwtUtil;
+
+    public AuthController( JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
+    }
 
     @PostMapping("/register")
     private User register(@RequestBody User user){
@@ -37,8 +43,9 @@ public class AuthController {
                         login.getPassword())
             );
 
-        return "login successfully";
+        return jwtUtil.generateToken(login.getName());
     }
+
 
 
 }
