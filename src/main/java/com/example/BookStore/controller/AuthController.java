@@ -35,7 +35,7 @@ public class AuthController {
         return userService.registerUser(user);
     }
     @PostMapping("/login")
-    private String login(@RequestBody LoginRequest login){
+    private String login(@RequestBody LoginRequest login,String role){
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -43,7 +43,7 @@ public class AuthController {
                         login.getPassword())
             );
 
-        return jwtUtil.generateToken(login.getName());
+        return jwtUtil.generateToken(login.getName(),role);
     }
 
 

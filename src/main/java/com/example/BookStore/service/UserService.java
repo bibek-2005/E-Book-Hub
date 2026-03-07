@@ -20,6 +20,11 @@ public class UserService {
         user.setPassword(encodedPass);
         return userRepo.save(user);
     }
+    public User register(User user){
+        user.setRole("USER");
+        return userRepo.save(user);
+    }
+
 
 
 

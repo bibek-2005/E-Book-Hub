@@ -1,12 +1,15 @@
 package com.example.BookStore.controller;
-
+import com.example.BookStore.entity.Book;
 import com.example.BookStore.entity.Book;
 import com.example.BookStore.service.BookService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @RestController
@@ -23,10 +26,10 @@ public class BookController {
         Book saveBook = service.saveBook(book); // the book is saved on the save book then it add it on the ResponseEnity
         return new ResponseEntity<>(saveBook, HttpStatus.CREATED);
     }
-    @GetMapping
-    public List<Book> getAllBooks(Book book){
-        return service.getAllBook(book);
-    }
+//    @GetMapping
+//    public List<Book> getAllBooks(Book book){
+//        return service.getAllBook(book);
+//    }
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable Long id){
         return service.getBookById(id);
@@ -43,6 +46,11 @@ public class BookController {
     @GetMapping("/search")
     public List<Book> searchBookByName(@RequestParam String title){
         return service.searchBook(title);
+    }
+
+    @GetMapping
+    public Page<Book> getAllBooks(Pageable page){
+        return service.getAllBook(page);
     }
 
 

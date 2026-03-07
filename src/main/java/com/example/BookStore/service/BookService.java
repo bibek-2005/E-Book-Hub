@@ -3,9 +3,11 @@ package com.example.BookStore.service;
 import com.example.BookStore.entity.Book;
 import com.example.BookStore.exception.BookNotFoundException;
 import com.example.BookStore.repository.BookRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Page;
 import java.util.List;
 
 @Service
@@ -27,6 +29,9 @@ public class BookService {
     }
     public void deleteBookById(Long id){
         repo.deleteById(id);
+    }
+    public Page<Book> getAllBook(Pageable page){
+        return repo.findAll(page);
     }
 
     public Book updateBook(Long id, Book book){
